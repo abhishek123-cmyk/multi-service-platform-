@@ -14,10 +14,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
+  uses: aws-actions/configure-aws-credentials@v4
+  with:
+    role-to-assume: arn:aws:iam::446100759629:role/github-actions-eks-role
+    aws-region: ap-south-1
+
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v2
