@@ -1,10 +1,14 @@
 name: Phase 1 - Terraform Infra
 
 on:
-  workflow_dispatch:   # Manual trigger
+  workflow_dispatch:
   push:
     branches:
       - main
+
+permissions:
+  id-token: write   # 👈 REQUIRED for OIDC
+  contents: read
 
 jobs:
   terraform:
@@ -22,4 +26,5 @@ jobs:
 
       - name: Verify AWS identity
         run: aws sts get-caller-identity
+
 
